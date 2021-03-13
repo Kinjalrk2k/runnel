@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# vidfeed
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Basic Outline
 
-## Available Scripts
+- The streamer's computer will have a Streaming software like OBS (Open Broadcaster Software)
+- The stream will have the actual video feed along with a unique stream key
+- This video will be streamed in an outside server. This is done by creating a Real time Messaging protocol (RTMP) server. This is a specialized that will receive a video feed and bradcast it to different viewers, who can watch from their browser. RTMP server has a sole purpose of streaming videos
+- We could potentially have multiple streamers and many different viewers can watch their streams
+- We need another seperate API server that will essentially store the list of different available streams
 
-In the project directory, you can run:
+## Authentication and Previlages
 
-### `npm start`
+- When not logged in:
+  - Users can view a list of streams
+  - Users can view a single stream
+- When logged in:
+  - User can create new stream
+  - User can edit a stream, that they have created
+  - User can delete a stream, that they have created
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## App Challenges
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Navigate around seperate pages
+- Login/Logout
+- Handle forms in Redux
+- CRUD operations with React/Redux
+- Error handling :)
 
-### `npm test`
+## React Router
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### React Router family of Libraries
 
-### `npm run build`
+- `react-router`: Core navigation library (We don't install this manually)
+- `react-router-dom`: Navigation for DOM based Apps
+- `react-router-native`: Navigation for react-native Apps
+- `react-router-redux`: Binding between Redux and React router
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### React Router working
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React router doesn't cares about the Domain/Hostname. It only cares about the URL after the first `/`
+- The `BrowserRouter` component creates a `history` object. It keeps track of the URLs in the browser.
+- The `history` object comminicated with `BrowserRouter` and it will in turn communicate with the child components `Route`s. The `Route` components then decides whether to show/hide themselves according to the `path`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Path Matching
 
-### `npm run eject`
+- Different routes can be matched by the same URL
+- `exact` keyword: Matches the exact URL and not the sub-URLs too. This is done, because React router internally uses `.contains(path)` on the URL string. Hence, any sub-URLs will also get matched if we don't put in the `exact` keyword
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Navigation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- DON'Ts
+  - Navigation shouldn't be handled with `a` tags just like we do in plain HTML.
+  - This is because, whenever we make a request with `a` tag, the server responds with a index.html file. Browser receives the new index.html file, dumps the old HTML file it was showing (including React/Redux state data)
+- DOs
+  - Use `Link` in place of `a` tags!
+  - Whenever the user uses the `Link`, the React router prevents to browser from navigating to a new page. But he URL still changes! `history` sees the updated URl, sends it to the `BrowserRouter` to do the needful.
+  - This is where the concept of SPAs (Single Page Applications) comes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Types of React Router
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- These types differ in the part of URL they match
+  - `BrowserRouter`: Uses everything after the TLD (Top Level Domain - .com, .net, .org) or port as the path
+  - `HashRouter`: Uses everything after a `/#/` as a path
+    - `/#/` is automatically injected in the URL
+    - Example: `localhost:3000/#/pagetwo/`
+  - `MemoryRouter`: Doesn't use the URL
+    - The URL doesn't change at all!
