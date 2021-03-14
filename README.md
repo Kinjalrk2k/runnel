@@ -65,3 +65,41 @@
     - Example: `localhost:3000/#/pagetwo/`
   - `MemoryRouter`: Doesn't use the URL
     - The URL doesn't change at all!
+
+## Authentication - OAuth
+
+- Google's OAuth2.0 Authentication Flow
+- OAuth can be used for
+  - User identification in our app
+  - Our app making actions on behalf of the user
+
+### Email/Password Auth VS OAuth
+
+- Email/Password Auth
+  - We store a record in a database with the user's email and password
+  - When the user tries to login, we compare email/password with whats stored in the DB
+  - A user is logged in when they enter the correct email/password
+- OAuth
+  - User authenticates with outside service provider (Like Google, Facebook, Github, LinkedIn, etc)
+  - User authorizes our app to access their information
+  - Outside provider tells us about the user
+  - We are trusting the outside provider to correctl handle identification of the user
+
+### OAuth - for Servers VS Browsers
+
+| For servers                                                                                     | For Browsers                                                                                      |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Results in a 'token' that a server can use to make requests on behalf of the user               | Results in a 'token' that a browser can use to make requests on behalf of the user                |
+| Usually used when we have an app that needs to access user data **when they are not logged in** | Usually used when we have an app that only needs to access user data **while they are logged in** |
+| Difficult to setup because we need to store a lot of info about the user                        | Very easy to setup! Thanks to Google's JS library to automate flow                                |
+
+### OAuth Flow
+
+- User clicks "Login with Google" button
+- We use Google's JS Library to initiate OAuth process
+  - Google's JS Lib makes auth request to Google
+  - Google displays confirmation screen to user in popup window
+  - User accepts
+  - Popup window closes
+- Google's JS lib invokes callback in our React/Redux app
+- Callback provided with "authorization" token and profile info for user

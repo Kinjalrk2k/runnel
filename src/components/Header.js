@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import GoogleAuth from "./GoogleAuth";
+
 import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 
 const Header = () => {
@@ -16,7 +18,7 @@ const Header = () => {
           VidFeed
         </Typography>
         <Button color="inherit">All Streams</Button>
-        <Button color="inherit">Login</Button>
+        <GoogleAuth />
       </Toolbar>
     </AppBar>
   );
