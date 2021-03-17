@@ -103,3 +103,13 @@
   - Popup window closes
 - Google's JS lib invokes callback in our React/Redux app
 - Callback provided with "authorization" token and profile info for user
+
+## Form Handling
+- Old Style: Component level state (Without Redux)
+  - We get the value through `onChange` callback, update the state and then push it back to the DOM
+- Mentos Style! (With Redux)
+  - We will have the same `value` and `onChange` callback
+  - There will be a form reducer
+    - Form Reducer → `mapStateToProps` → `props` → `value` on DOM
+    - Form Reducer ← Action Creators ← callback handler ← `onChange`
+  - This all the stuffs will be handled with redux form libraries
