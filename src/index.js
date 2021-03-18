@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { CssBaseline } from "@material-ui/core";
-import { deepPurple } from "@material-ui/core/colors";
+import { green, lightBlue } from "@material-ui/core/colors";
 
 import App from "./components/App";
 import reducers from "./reducers";
@@ -16,7 +16,8 @@ const store = createStore(reducers, composeEnhancers(applyMiddleware()));
 const theme = createMuiTheme({
   palette: {
     type: "dark",
-    primary: deepPurple,
+    primary: green,
+    secondary: lightBlue,
   },
 });
 

@@ -104,7 +104,10 @@
 - Google's JS lib invokes callback in our React/Redux app
 - Callback provided with "authorization" token and profile info for user
 
-## Form Handling
+## Forms
+
+### Form Handling
+
 - Old Style: Component level state (Without Redux)
   - We get the value through `onChange` callback, update the state and then push it back to the DOM
 - Mentos Style! (With Redux)
@@ -113,3 +116,15 @@
     - Form Reducer → `mapStateToProps` → `props` → `value` on DOM
     - Form Reducer ← Action Creators ← callback handler ← `onChange`
   - This all the stuffs will be handled with redux form libraries
+
+### Form Validation
+
+- Form is initially rendered OR the user interacts with it
+  - Validate function gets called with all values from the form
+- `validate(formValues)`
+- Did user etered valid inputs?
+  - YES
+    - Return an empty object
+  - NO
+    - Return an object. For each invalid field, put a key-value pair on the object with the name of the field as key and error message ad value
+    - Redux component re-renderes our component
