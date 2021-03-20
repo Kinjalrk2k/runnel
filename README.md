@@ -128,3 +128,9 @@
   - NO
     - Return an object. For each invalid field, put a key-value pair on the object with the name of the field as key and error message ad value
     - Redux component re-renderes our component
+
+## The API Server
+
+### RESTful Conventions
+
+- Seriously? - You know these!
