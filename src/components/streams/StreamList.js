@@ -13,7 +13,6 @@ import {
   Grid,
   Button,
 } from "@material-ui/core";
-import MuiAlert from "@material-ui/lab/Alert";
 
 import { blue, red } from "@material-ui/core/colors";
 
@@ -44,6 +43,8 @@ class StreamList extends React.Component {
               variant="contained"
               style={{ backgroundColor: blue[500] }}
               startIcon={<EditIcon />}
+              component={Link}
+              to={`/streams/edit/${stream._id}`}
             >
               Edit
             </Button>

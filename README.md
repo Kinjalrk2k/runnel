@@ -135,7 +135,18 @@
 
 - Seriously? - You know these!
 
-## Navigation
+### Navigation
 
 - Intentional Navigation: User clicks on `Link` component
 - Programmatic Navigation: We run code to forceibly navigate users through the app.
+
+### Dynamic URLs
+
+- Using React Router DOM
+- Selection Reducer can be used
+- URL based selection puts the ID in the URL
+- Also called Wildcard Navivation
+- Same as Express `/:id` → Route Params
+- Get the id with `props.match.params.id`
+
+> Note: With React-Router, each component needs to be designed to work in isolation (fetch it's own data!)
