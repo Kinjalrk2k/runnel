@@ -1,6 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { Container, Button } from "@material-ui/core";
+import { Container, Button, Typography } from "@material-ui/core";
 import RenderInput from "./RenderInput";
 import { connect } from "react-redux";
 import { createStream } from "../../actions";
@@ -14,6 +14,9 @@ class StreamCreate extends React.Component {
   render() {
     return (
       <Container maxWidth="md">
+        <Typography variant="h3" component="h1" style={{ textAlign: "center" }}>
+          Create a New Stream
+        </Typography>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field
             component={RenderInput}

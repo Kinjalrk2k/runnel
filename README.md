@@ -134,3 +134,8 @@
 ### RESTful Conventions
 
 - Seriously? - You know these!
+
+## Navigation
+
+- Intentional Navigation: User clicks on `Link` component
+- Programmatic Navigation: We run code to forceibly navigate users through the app.
