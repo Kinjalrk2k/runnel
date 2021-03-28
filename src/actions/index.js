@@ -1,4 +1,3 @@
-import { formValues } from "redux-form";
 import history from "../history";
 import streams from "../apis/streams";
 import {
@@ -72,10 +71,15 @@ export const editStream = (id, formValues) => async (dispatch) => {
 };
 
 export const deleteStream = (id) => async (dispatch) => {
-  const response = await streams.delete(`/streams/${id}`);
+  await streams.delete(`/streams/${id}`);
 
   dispatch({
     type: DELETE_STREAM,
     payload: id,
+  });
+
+  history.push({
+    pathname: "/",
+    state: { success: "Stream was deleted successfully!" },
   });
 };

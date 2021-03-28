@@ -135,12 +135,12 @@
 
 - Seriously? - You know these!
 
-### Navigation
+## Navigation
 
 - Intentional Navigation: User clicks on `Link` component
 - Programmatic Navigation: We run code to forceibly navigate users through the app.
 
-### Dynamic URLs
+## Dynamic URLs
 
 - Using React Router DOM
 - Selection Reducer can be used
@@ -150,3 +150,12 @@
 - Get the id with `props.match.params.id`
 
 > Note: With React-Router, each component needs to be designed to work in isolation (fetch it's own data!)
+
+## React Portals
+
+- Creating Modals are difficult in React
+- Normally all the components are child to the root div
+- React Portals lets us have a workaround of the above problem
+- React Portals lets us render components as a child of some other component
+- Syntax:
+  `ReactDOM.createPortal(JSX, element)`

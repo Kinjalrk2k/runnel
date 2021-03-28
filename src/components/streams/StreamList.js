@@ -57,6 +57,8 @@ class StreamList extends React.Component {
               variant="contained"
               style={{ backgroundColor: red[500] }}
               startIcon={<DeleteIcon />}
+              component={Link}
+              to={`/streams/delete/${stream._id}`}
             >
               Delete
             </Button>
