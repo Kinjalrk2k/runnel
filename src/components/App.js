@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Router } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import history from "../history";
 import { Container } from "@material-ui/core";
 
@@ -19,15 +19,21 @@ const App = () => {
       <Router history={history}>
         <Header />
         <Container maxWidth="md" style={{ paddingTop: 20 }}>
-          <Route path="/" exact component={StreamList}></Route>
-          <Route path="/streams/new" exact component={StreamCreate}></Route>
-          <Route path="/streams/edit/:id" exact component={StreamEdit}></Route>
-          <Route
-            path="/streams/delete/:id"
-            exact
-            component={StreamDelete}
-          ></Route>
-          <Route path="/streams/show" exact component={StreamShow}></Route>
+          <Switch>
+            <Route path="/" exact component={StreamList}></Route>
+            <Route path="/streams/new" exact component={StreamCreate}></Route>
+            <Route
+              path="/streams/edit/:id"
+              exact
+              component={StreamEdit}
+            ></Route>
+            <Route
+              path="/streams/delete/:id"
+              exact
+              component={StreamDelete}
+            ></Route>
+            <Route path="/streams/:id" exact component={StreamShow}></Route>
+          </Switch>
         </Container>
       </Router>
     </div>

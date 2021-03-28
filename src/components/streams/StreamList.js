@@ -12,6 +12,7 @@ import {
   Typography,
   Grid,
   Button,
+  CardActionArea,
 } from "@material-ui/core";
 
 import { blue, red } from "@material-ui/core/colors";
@@ -76,32 +77,37 @@ class StreamList extends React.Component {
       return (
         <ListItem key={stream._id}>
           <Card style={{ width: "100%" }}>
-            {/* <CardActionArea> */}
-            <CardContent>
-              <Grid
-                container
-                spacing={2}
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <Grid item style={{ display: "flex", alignItems: "center" }}>
-                  <OndemandVideoIcon style={{ fontSize: "xxx-large" }} />
-                </Grid>
-                <Grid item style={{ flexGrow: 1 }}>
-                  <Typography variant="h5" component="h2">
-                    {stream.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    component="p"
-                    color="textSecondary"
+            <CardActionArea>
+              <CardContent>
+                <Grid
+                  container
+                  spacing={2}
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <Grid item style={{ display: "flex", alignItems: "center" }}>
+                    <OndemandVideoIcon style={{ fontSize: "xxx-large" }} />
+                  </Grid>
+                  <Grid
+                    item
+                    style={{ flexGrow: 1 }}
+                    component={Link}
+                    to={`/streams/${stream._id}`}
                   >
-                    {stream.description}
-                  </Typography>
+                    <Typography variant="h5" component="h2">
+                      {stream.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      component="p"
+                      color="textSecondary"
+                    >
+                      {stream.description}
+                    </Typography>
+                  </Grid>
+                  <Grid item>{this.renderAdmin(stream)}</Grid>
                 </Grid>
-                <Grid item>{this.renderAdmin(stream)}</Grid>
-              </Grid>
-            </CardContent>
-            {/* </CardActionArea> */}
+              </CardContent>
+            </CardActionArea>
           </Card>
         </ListItem>
       );

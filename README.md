@@ -148,6 +148,7 @@
 - Also called Wildcard Navivation
 - Same as Express `/:id` → Route Params
 - Get the id with `props.match.params.id`
+- `Switch` lets React Router DOM show just one component at a time
 
 > Note: With React-Router, each component needs to be designed to work in isolation (fetch it's own data!)
 
