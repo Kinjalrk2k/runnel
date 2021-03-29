@@ -18,23 +18,18 @@ const App = () => {
     <div>
       <Router history={history}>
         <Header />
-        <Container maxWidth="md" style={{ paddingTop: 20 }}>
-          <Switch>
-            <Route path="/" exact component={StreamList}></Route>
-            <Route path="/streams/new" exact component={StreamCreate}></Route>
-            <Route
-              path="/streams/edit/:id"
-              exact
-              component={StreamEdit}
-            ></Route>
-            <Route
-              path="/streams/delete/:id"
-              exact
-              component={StreamDelete}
-            ></Route>
-            <Route path="/streams/:id" exact component={StreamShow}></Route>
-          </Switch>
-        </Container>
+
+        <Switch>
+          <Route path="/" exact component={StreamList}></Route>
+          <Route path="/streams/new" exact component={StreamCreate}></Route>
+          <Route path="/streams/edit/:id" exact component={StreamEdit}></Route>
+          <Route
+            path="/streams/delete/:id"
+            exact
+            component={StreamDelete}
+          ></Route>
+          <Route path="/streams/:id" exact component={StreamShow}></Route>
+        </Switch>
       </Router>
     </div>
   );

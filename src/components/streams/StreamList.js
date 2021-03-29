@@ -13,6 +13,7 @@ import {
   Grid,
   Button,
   CardActionArea,
+  Container,
 } from "@material-ui/core";
 
 import { blue, red } from "@material-ui/core/colors";
@@ -139,21 +140,27 @@ class StreamList extends React.Component {
 
   render() {
     return (
-      <div>
-        <Grid container style={{ alignItems: "center" }}>
-          <Grid item style={{ flexGrow: 1 }}>
-            <Typography
-              variant="h3"
-              component="h1"
-              style={{ textAlign: "center" }}
-            >
-              Streams
-            </Typography>
+      <Container
+        className="theContainer"
+        maxWidth="md"
+        style={{ paddingTop: 20 }}
+      >
+        <div>
+          <Grid container style={{ alignItems: "center" }}>
+            <Grid item style={{ flexGrow: 1 }}>
+              <Typography
+                variant="h3"
+                component="h1"
+                style={{ textAlign: "center" }}
+              >
+                Streams
+              </Typography>
+            </Grid>
+            <Grid item>{this.renderCreate()}</Grid>
           </Grid>
-          <Grid item>{this.renderCreate()}</Grid>
-        </Grid>
-        <List>{this.renderList()}</List>
-      </div>
+          <List>{this.renderList()}</List>
+        </div>
+      </Container>
     );
   }
 }

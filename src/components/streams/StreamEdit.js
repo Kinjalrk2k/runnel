@@ -1,6 +1,6 @@
 import _ from "lodash";
 import React from "react";
-import { Typography } from "@material-ui/core";
+import { Typography, Container } from "@material-ui/core";
 import { connect } from "react-redux";
 import { fetchStream, editStream } from "../../actions";
 import StreamForm from "./StreamForm";
@@ -21,7 +21,11 @@ class StreamEdit extends React.Component {
     }
 
     return (
-      <>
+      <Container
+        className="theContainer"
+        maxWidth="md"
+        style={{ paddingTop: 20 }}
+      >
         <Typography variant="h3" component="h1" style={{ textAlign: "center" }}>
           Edit your Stream
         </Typography>
@@ -29,7 +33,7 @@ class StreamEdit extends React.Component {
           onSubmit={this.onSubmit}
           initialValues={_.pick(this.props.stream, "title", "description")}
         />
-      </>
+      </Container>
     );
   }
 }
