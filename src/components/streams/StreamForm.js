@@ -1,6 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { Container, Button, Typography } from "@material-ui/core";
+import { Container, Button } from "@material-ui/core";
 import RenderInput from "./RenderInput";
 
 class StreamForm extends React.Component {
