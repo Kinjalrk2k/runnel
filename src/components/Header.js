@@ -24,7 +24,7 @@ class Header extends React.Component {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" style={{ flexGrow: 1 }}>
-            <Link to="/">VidFeed</Link>
+            <Link to="/">Runnel</Link>
           </Typography>
           <Button color="inherit" style={{ marginRight: "20px" }}>
             All Streams
